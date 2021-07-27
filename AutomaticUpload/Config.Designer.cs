@@ -37,14 +37,18 @@
             this.lblRemotePath = new System.Windows.Forms.Label();
             this.txtRemotePath = new System.Windows.Forms.TextBox();
             this.btnRemotePath = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtProjectPath
             // 
+            this.txtProjectPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProjectPath.Location = new System.Drawing.Point(128, 25);
             this.txtProjectPath.Name = "txtProjectPath";
-            this.txtProjectPath.Size = new System.Drawing.Size(569, 20);
+            this.txtProjectPath.Size = new System.Drawing.Size(566, 20);
             this.txtProjectPath.TabIndex = 0;
+            this.txtProjectPath.Text = "C:\\Users\\Pablo-HP\\nerdearlaenvivo";
             // 
             // lblProjectPath
             // 
@@ -56,7 +60,8 @@
             // 
             // btnProjectPath
             // 
-            this.btnProjectPath.Location = new System.Drawing.Point(703, 19);
+            this.btnProjectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProjectPath.Location = new System.Drawing.Point(700, 19);
             this.btnProjectPath.Name = "btnProjectPath";
             this.btnProjectPath.Size = new System.Drawing.Size(32, 30);
             this.btnProjectPath.TabIndex = 2;
@@ -66,7 +71,8 @@
             // 
             // btnAddConfig
             // 
-            this.btnAddConfig.Location = new System.Drawing.Point(741, 51);
+            this.btnAddConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddConfig.Location = new System.Drawing.Point(738, 51);
             this.btnAddConfig.Name = "btnAddConfig";
             this.btnAddConfig.Size = new System.Drawing.Size(32, 30);
             this.btnAddConfig.TabIndex = 3;
@@ -76,6 +82,8 @@
             // 
             // lstProject
             // 
+            this.lstProject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lstProject.FormattingEnabled = true;
             this.lstProject.Location = new System.Drawing.Point(15, 103);
             this.lstProject.Name = "lstProject";
@@ -84,10 +92,13 @@
             // 
             // lstActivity
             // 
+            this.lstActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstActivity.FormattingEnabled = true;
             this.lstActivity.Location = new System.Drawing.Point(422, 103);
             this.lstActivity.Name = "lstActivity";
-            this.lstActivity.Size = new System.Drawing.Size(497, 303);
+            this.lstActivity.Size = new System.Drawing.Size(348, 303);
             this.lstActivity.TabIndex = 5;
             this.lstActivity.SelectedIndexChanged += new System.EventHandler(this.lstActivity_SelectedIndexChanged);
             // 
@@ -101,15 +112,17 @@
             // 
             // txtRemotePath
             // 
+            this.txtRemotePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemotePath.Location = new System.Drawing.Point(128, 57);
             this.txtRemotePath.Name = "txtRemotePath";
-            this.txtRemotePath.ReadOnly = true;
-            this.txtRemotePath.Size = new System.Drawing.Size(569, 20);
+            this.txtRemotePath.Size = new System.Drawing.Size(566, 20);
             this.txtRemotePath.TabIndex = 6;
             // 
             // btnRemotePath
             // 
-            this.btnRemotePath.Location = new System.Drawing.Point(703, 51);
+            this.btnRemotePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemotePath.Location = new System.Drawing.Point(700, 51);
             this.btnRemotePath.Name = "btnRemotePath";
             this.btnRemotePath.Size = new System.Drawing.Size(32, 30);
             this.btnRemotePath.TabIndex = 8;
@@ -117,11 +130,25 @@
             this.btnRemotePath.UseVisualStyleBackColor = true;
             this.btnRemotePath.Click += new System.EventHandler(this.btnRemotePath_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(685, 434);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(85, 30);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Cerrar";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
             // Config
             // 
+            this.AcceptButton = this.btnClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(931, 414);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(784, 471);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRemotePath);
             this.Controls.Add(this.lblRemotePath);
             this.Controls.Add(this.txtRemotePath);
@@ -131,7 +158,9 @@
             this.Controls.Add(this.btnProjectPath);
             this.Controls.Add(this.lblProjectPath);
             this.Controls.Add(this.txtProjectPath);
+            this.MinimumSize = new System.Drawing.Size(800, 510);
             this.Name = "Config";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Automatic Upload";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,6 +178,7 @@
         private System.Windows.Forms.Label lblRemotePath;
         private System.Windows.Forms.TextBox txtRemotePath;
         private System.Windows.Forms.Button btnRemotePath;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 

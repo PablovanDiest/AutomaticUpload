@@ -12,6 +12,7 @@ namespace AutomaticUpload
 {
     public partial class Config : Form
     {
+
         public Config()
         {
             InitializeComponent();
@@ -53,28 +54,21 @@ namespace AutomaticUpload
 
         private void OnChanged(object source, FileSystemEventArgs e)
         {
-            this.lstActivity.Items.Add("File: " + e.FullPath + " " + e.ChangeType);
+            UpdateStatus(String.Format("File: {0} {1}", e.FullPath, e.ChangeType));
         }
 
         private void OnRenamed(object source, RenamedEventArgs e)
         {
-            this.lstActivity.Items.Add(String.Format("File: {0} renamed to {1}", e.OldFullPath, e.FullPath));
+            UpdateStatus(String.Format("File: {0} renamed to {1}", e.OldFullPath, e.FullPath));
         }
         #endregion
 
         #region Private Methods
         private void checkForChanges(String path)
         {
+            this.lstProject.Items.Add(path);
             this.CreateFileWatcher(path);
         }
-
-        //public void AppendListViewcalls(string input)
-        //{
-        //    this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate()
-        //    {
-        //        this.lstResults.Items.Add(input);
-        //    }));
-        //}  
 
         private void CreateFileWatcher(string path)
         {
@@ -93,8 +87,12 @@ namespace AutomaticUpload
             watcher.Deleted += new FileSystemEventHandler(OnChanged);
             watcher.Renamed += new RenamedEventHandler(OnRenamed);
 
-            // Begin watching.
             watcher.EnableRaisingEvents = true;
+        }
+
+        private void UpdateStatus(String message)
+        {
+            Invoke(new Action(() => { this.lstActivity.Items.Add(message); }));
         }
         #endregion
 
