@@ -38,6 +38,9 @@
             this.txtRemotePath = new System.Windows.Forms.TextBox();
             this.btnRemotePath = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.configDataSet = new AutomaticUpload.ConfigDataSet();
+            this.configTableAdapter1 = new AutomaticUpload.ConfigDataSetTableAdapters.ConfigTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.configDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // txtProjectPath
@@ -140,6 +143,16 @@
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // configDataSet
+            // 
+            this.configDataSet.DataSetName = "ConfigDataSet";
+            this.configDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // configTableAdapter1
+            // 
+            this.configTableAdapter1.ClearBeforeFill = true;
             // 
             // Config
             // 
@@ -162,6 +175,8 @@
             this.Name = "Config";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Automatic Upload";
+            this.Load += new System.EventHandler(this.Config_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.configDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,6 +194,8 @@
         private System.Windows.Forms.TextBox txtRemotePath;
         private System.Windows.Forms.Button btnRemotePath;
         private System.Windows.Forms.Button btnClose;
+        private ConfigDataSet configDataSet;
+        private ConfigDataSetTableAdapters.ConfigTableAdapter configTableAdapter1;
     }
 }
 

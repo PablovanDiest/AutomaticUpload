@@ -16,6 +16,7 @@ namespace AutomaticUpload
         public Config()
         {
             InitializeComponent();
+            loadConfig();
         }
 
         #region Private Events
@@ -64,8 +65,22 @@ namespace AutomaticUpload
         #endregion
 
         #region Private Methods
+        private void loadConfig(){
+            DataRowCollection rows = configDataSet.Tables["Config"].Rows;
+            foreach (DataRow row in configDataSet.Tables["Config"].Rows)
+            {
+                this.lstProject.Items.Add(row["ProjectPath"]);
+            }
+        }
+
         private void checkForChanges(String path)
         {
+            DataRow row = configDataSet.Tables["Config"].NewRow();
+            row["ProjectPath"] = path;
+            row["RemotePath"]  = "";
+            configDataSet.Tables["Config"].Rows.Add(row);
+            configDataSet.Tables["Config"].AcceptChanges();
+            configDataSet.AcceptChanges();
             this.lstProject.Items.Add(path);
             this.CreateFileWatcher(path);
         }
@@ -99,6 +114,16 @@ namespace AutomaticUpload
         private void lstActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Config_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
